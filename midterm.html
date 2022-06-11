@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<title>多層級選單</title>
+<meta charset="utf-8">
+<style>
+ul {
+    margin: 0;
+    padding: 0;
+    width : 150px;
+}
+li {
+    border: rgb(230, 201, 173) 1px dashed;     
+}
+.hide{
+    display:none;
+}
+.show{
+    display:block;
+}
+.menu {
+    font-family: '標楷體';
+}
+.menu a {
+    padding: 25px 25px;
+    display: block;
+    text-decoration: none;
+    background-color: rgb(67, 61, 96);
+}
+.menu > li >a{/*第一層選單*/
+    font-size: 18px;
+    color:rgb(0, 255, 4);
+}
+.menu > li >ul >li >a{/*第二層選單*/
+    font-size: 16px;
+    color:rgb(255, 0, 166);
+}
+</style>
+<script>
+function changeState(){
+    var ul=this.parentNode.getElementsByTagName("ul")[0];
+    if (ul.className == "hide"){
+        ul.className = "show";
+    }else{
+        ul.className = "hide";
+    }
+}
+window.onload = function(){
+    var menu=document.getElementById("myMenu");
+    var subMenu=menu.getElementsByTagName("ul");
+    for(i=0;i<subMenu.length;i++){
+        subMenu[i].parentElement.firstChild.onclick = changeState;
+    }
+}
+</script>
+</head>
+<body>
+<ul class="menu" id="myMenu">
+    <li><a href="#">金門景點>></a>
+        <ul class="hide">
+            <li><a href="#">歐厝沉睡海戰車</a></li>
+            <li><a href="#">翟山坑道</a></li>
+            <li><a href="#">陳景蘭洋樓</a></li>
+        </ul>
+    </li>
+    <li><a href="#">金門美食>></a>
+        <ul class="hide">
+            <li><a href="#">談天樓湯圓冰</a></li>
+            <li><a href="#">永春廣東粥</a></li>
+            <li><a href="#">良金牧場牛肉麵</a>
+            </li>
+        </ul>
+    </li>
+    <li><a href="#">小金門美食>></a>
+        <ul  class="hide">
+            <li><a href="#">芋頭麵線</a></li>
+            <li><a href="#">東林北街黑糖剉冰</a></li>
+            <li><a href="#">蔡媽媽蚵爹</a></li>
+        </ul>
+    </li>
+    <a href="https://www.settour.com.tw/act/khh/tour/kinmen/">來金門玩吧!!!</a>這個方塊會連到 東南旅遊網站<br>
+</body>
+</html>
